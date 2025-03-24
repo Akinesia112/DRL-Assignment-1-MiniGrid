@@ -8,13 +8,17 @@ The project consists of two main parts:
 
 - **Tabular Q-Learning Implementation**  
   The Q-learning agent uses a tabular representation of Q-values stored as a PyTorch tensor. The update rule is based on the Bellman equation:
+  
 $
   Q(s, a) \leftarrow Q(s, a) + \alpha \Big[r + \gamma \max_{a'} Q(s', a') - Q(s, a)\Big],
 $
+
   with the loss function defined as:
+  
 $
   \mathcal{L} = \text{MSE}\Big(Q(s, a), \text{sg}\big(r + \gamma \max_{a'} Q(s', a')\big)\Big),
 $
+
   where the stop-gradient operation is used to prevent gradients from flowing through the target value. The agent uses an ε-greedy policy for exploration and is applied on environments like `MiniGrid-Empty-8x8-v0` and `MiniGrid-DoorKey-8x8-v0`.
 
 - **Policy Learning Implementation**  
